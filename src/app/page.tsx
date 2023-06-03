@@ -10,7 +10,7 @@ export default async function Home() {
         <div className="container-fluid col-md-8">
           <p className="text-center">Cari pekerjaan impian anda walaupun yang bikin web nya masih ngaggur. Gak usah pikirin saya, pokoknya <Link href={'/#'}>DAFTAR</Link> sekarang juga !</p>
         </div>
-        <button className="btn btn-primary btn-lg" type="button">Cari Kerja</button>
+        <Link className="btn btn-primary btn-lg" type="button" href='/search'>Cari Kerja</Link>
       </div>
     </div>
     <Main />
