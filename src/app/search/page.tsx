@@ -2,21 +2,15 @@
 
 import CheckBox from "@/component/CheckBox";
 import toParams from "@/lib/toParams";
+import SearchJobQueryTypes from "@/types/SearchJobQueryTypes";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-
-type searchJobQueryTypes = {
-  jobText: string,
-  experience: string[],
-  minSalary: string,
-  jobType: string[]
-}
 
 const Search = () => {
   const router = useRouter()
   const urlParams = useSearchParams()
 
-  const [searchQuery, setSearchQuery] = useState<searchJobQueryTypes>({
+  const [searchQuery, setSearchQuery] = useState<SearchJobQueryTypes>({
     jobText: '',
     experience: [],
     minSalary: '',
