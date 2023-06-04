@@ -5,6 +5,9 @@ import Navbar from "@/component/Navbar";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+// dummy
+import jobsData from "@/dummy/jobs.json";
+
 const Result = () => {
   const urlParams = useSearchParams()
   const paramsObj = {
@@ -14,13 +17,24 @@ const Result = () => {
     jobType: urlParams.get('jobType')?.split(',') || []
   }
 
-  const [isLoading, setIsLoading] = useState(true)
-  const screenSize = window.innerWidth;
+  const [settings, setSettings] = useState({
+    isLoading: true,
+    screenSize: 0
+  })
 
+  const [data, setData] = useState([])
+  const [jobDetail, setJobDetail] = useState<any>({})
+  
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 3000);
+    (async () => {
+      const fetch = JSON.stringify(jobsData);
+      const dataParsed = await JSON.parse(fetch)
+      setData(dataParsed.data)
+      setSettings({
+        isLoading: false,
+        screenSize: window.innerWidth
+      })
+    })()
   }, []);
 
   return (<>
@@ -30,23 +44,26 @@ const Result = () => {
       {paramsObj.jobText !== '' && <div>Pencarian untuk <b>'{paramsObj.jobText}'</b></div>}
     </div>
 
-    { !isLoading &&
+    { !settings.isLoading &&
       <section className="mt-4 mx-2">
         <aside className="col-12 col-lg-3 col-md-4">
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
+          { data.map((e: any) => (
+            <div onClick={() => setJobDetail(e)}><JobCard title={e.job_title} subtitle={e.company_name} content={`Rp. ${e.salary_range}`} /></div>
+          ))
+
+          }
         </aside>
-        { screenSize >= 768 &&
+        { settings.screenSize >= 768 &&
           <main id="job-mini-detail">
-            <JobCard yesBtn="lamar" noBtn="Simpan" />
+            { jobDetail.job_title &&
+              <JobCard
+                yesBtn="lamar"
+                noBtn="Simpan"
+                title={`${jobDetail.job_title} (Rp. ${jobDetail.salary_range})`}
+                subtitle={jobDetail.company_name}
+                content={jobDetail.description}
+              />
+            }
           </main>
         }
       </section>
