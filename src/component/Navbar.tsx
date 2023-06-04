@@ -28,13 +28,13 @@ const Navbar = (props: { paramsObj: SearchJobQueryTypes }) => {
       <div className="nav-item ms-auto align-self-center col-auto mx-2">
         <div className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Profil
+            carigawe
           </a>
           <ul className="dropdown-menu dropdown-menu-end">
-            <li><a className="dropdown-item" href="#">Action</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
+            <li><a className="dropdown-item" href="#">Beranda</a></li>
+            <li><a className="dropdown-item" href="#">Profil</a></li>
             <li><hr className="dropdown-divider" /></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
+            <li><a className="dropdown-item" href="#">Keluar</a></li>
           </ul>
         </div>
       </div>
