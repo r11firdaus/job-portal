@@ -2,15 +2,15 @@
 
 import JobCard from "@/component/JobCard";
 import Navbar from "@/component/Navbar";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import Jobs from "@/types/Jobs";
 
 // dummy
 import jobsData from "@/dummy/jobs.json";
 
 const Result = () => {
   const urlParams = useSearchParams()
-  const router = useRouter()
   const paramsObj = {
     jobText: urlParams.get('jobText')?.trim() || '',
     experience: urlParams.get('experience')?.split(',') || [],
@@ -23,14 +23,19 @@ const Result = () => {
     screenSize: 0
   })
 
-  const [data, setData] = useState([])
-  const [jobDetail, setJobDetail] = useState<any>({})
+  const [data, setData] = useState<Jobs[]>([])
+  const [jobDetail, setJobDetail] = useState<Jobs>({
+    job_title: '',
+    company_name: '',
+    salary_range: '',
+    description: ''
+  })
   
   useEffect(() => {
     (async () => {
       const fetch = JSON.stringify(jobsData);
-      const dataParsed = await JSON.parse(fetch)
-      setData(dataParsed.data)
+      const dataParsed: Jobs[] = await JSON.parse(fetch)?.data
+      setData(dataParsed)
       setSettings({
         isLoading: false,
         screenSize: window.innerWidth
@@ -61,7 +66,7 @@ const Result = () => {
         </aside>
         { settings.screenSize >= 768 &&
           <main id="job-mini-detail">
-            { jobDetail.job_title &&
+            { jobDetail.job_title.trim() !== '' &&
               <JobCard
                 yesBtn="lamar"
                 noBtn="Simpan"

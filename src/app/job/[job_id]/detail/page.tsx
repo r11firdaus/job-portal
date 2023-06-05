@@ -1,6 +1,7 @@
 import JobCard from "@/component/JobCard";
 import Navbar from "@/component/Navbar";
 import { getJob } from "@/lib/api/getDetailJob";
+import Jobs from "@/types/Jobs";
 import { Metadata, ResolvingMetadata } from "next";
 
 export async function generateMetadata(
@@ -15,7 +16,7 @@ export async function generateMetadata(
 }
 
 const Detail = async ({ params }: { params: any }) => {
-  const jobDetail = await getJob(params.job_id)
+  const jobDetail: Jobs = await getJob(params.job_id)
 
   return (<>
     <Navbar />
