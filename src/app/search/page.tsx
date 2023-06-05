@@ -51,7 +51,7 @@ const Search = () => {
   return (<>
     <div className="p-3 mb-5 pb-5">
       <div className="input-group mb-3">
-        <span className="input-group-text" id="basic-addon1">
+        <span className="input-group-text border-success text-light bg-success" id="basic-addon1">
           <svg width="20" height="20" className="DocSearch-Search-Icon" viewBox="0 0 20 20">
             <path
               d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
@@ -63,7 +63,7 @@ const Search = () => {
             </path>
           </svg>
         </span>
-        <input type="text" className="form-control" defaultValue={searchQuery.jobText} placeholder="Nama perusahaan, pekerjaan, dll." id="jobText" />
+        <input type="text" className="form-control border-success" defaultValue={searchQuery.jobText} placeholder="Nama perusahaan, pekerjaan, dll." id="jobText" />
       </div>
 
       <fieldset className="mb-3">
@@ -74,8 +74,8 @@ const Search = () => {
       </fieldset>
 
       <div className="input-group mb-3">
-        <span className="input-group-text">Rp.</span>
-        <input type="text" className="form-control" aria-label="Amount (to the nearest dollar)" defaultValue={searchQuery.minSalary} id="minSalary" placeholder="Gaji minimal, contoh 3000000"/>
+        <span className="input-group-text text-light bg-success border-success">Rp.</span>
+        <input type="text" className="form-control border-success" aria-label="Amount (to the nearest dollar)" defaultValue={searchQuery.minSalary} id="minSalary" placeholder="Gaji minimal, contoh 3000000"/>
       </div>
 
       <fieldset className="mb-3">
@@ -88,7 +88,7 @@ const Search = () => {
     </div><br />
     <div className="fixed-bottom p-3 d-grid gap-2 bg-light">
       <button className="btn btn-success" type="submit" onClick={() => searchJob()}>Cari</button>
-      <button className="btn btn-secondary" type="button" onClick={() => router.back()}>Kembali</button>
+      <button className="btn btn-outline-success" type="button" onClick={() => router.back()}>Kembali</button>
     </div>
   </>);
 }

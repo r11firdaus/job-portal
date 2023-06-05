@@ -12,15 +12,15 @@ interface JobCard {
 
 const JobCard = ({ yesBtn, noBtn, yesUrl, noUrl, title, subtitle, content }: JobCard) => {
   return (
-    <div className="card">
+    <div className="card my-2">
       <div className="card-body">
         <div className="mb-3">
-          <h5 className="card-title">{title}</h5>
+          <h5 className="card-title text-success">{title}</h5>
           <b className="text-secondary">{subtitle}</b>
         </div>
         <p className="card-text">{content}</p>
         { yesBtn && <Link href={yesUrl || '#'} className="btn btn-success mx-1">{yesBtn}</Link> }
-        { noBtn && <Link href={noUrl || '#'} className="btn btn-secondary mx-1">{noBtn}</Link> }
+        { noBtn && <Link href={noUrl || '#'} className="btn btn-outline-success mx-1">{noBtn}</Link> }
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const CheckBox = ({ defCheck, value, id, caption, addClass }: CheckBoxTypes) => 
 
   return (
     <div className="form-check">
-      <input className={`form-check-input ${addClass}`} type="checkbox" defaultChecked={defCheck} value={value} id={id} />
+      <input className={`form-check-input border-success ${addClass}`} type="checkbox" defaultChecked={defCheck} value={value} id={id} />
       <small className="form-check-label">{caption}</small>
     </div>
   );
