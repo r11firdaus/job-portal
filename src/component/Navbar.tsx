@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import toParams from "@/lib/toParams";
 import SearchJobQueryTypes from "@/types/SearchJobQueryTypes";
+import Link from "next/link";
 
 const Navbar = (props: { paramsObj?: SearchJobQueryTypes }) => {
   const router = useRouter()
@@ -33,10 +34,10 @@ const Navbar = (props: { paramsObj?: SearchJobQueryTypes }) => {
             carigawe
           </a>
           <ul className="dropdown-menu dropdown-menu-end">
-            <li><a className="dropdown-item" href="#">Beranda</a></li>
-            <li><a className="dropdown-item" href="#">Profil</a></li>
+            <li><Link className="dropdown-item" href="/">Beranda</Link></li>
+            <li><Link className="dropdown-item" href="#">Profil</Link></li>
             <li><hr className="dropdown-divider" /></li>
-            <li><a className="dropdown-item" href="#">Keluar</a></li>
+            <li><Link className="dropdown-item" href="#">Keluar</Link></li>
           </ul>
         </div>
       </div>

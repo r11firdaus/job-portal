@@ -59,7 +59,7 @@ const Result = () => {
       <section className="mt-4 mx-2">
         <aside className="col-12 col-lg-3 col-md-4">
           { data.map((e: any, i) => (
-            <div onClick={() => viewJob(e, i)}><JobCard title={e.job_title} subtitle={e.company_name} content={`Rp. ${e.salary_range}`} /></div>
+            <div key={i} onClick={() => viewJob(e, i)}><JobCard title={e.job_title} subtitle={e.company_name} content={`Rp. ${e.salary_range}`} /></div>
           ))
 
           }
