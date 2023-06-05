@@ -1,8 +1,10 @@
+'use client'
+
 import { useRouter } from "next/navigation";
 import toParams from "@/lib/toParams";
 import SearchJobQueryTypes from "@/types/SearchJobQueryTypes";
 
-const Navbar = (props: { paramsObj: SearchJobQueryTypes }) => {
+const Navbar = (props: { paramsObj?: SearchJobQueryTypes }) => {
   const router = useRouter()
   const paramsObj = props.paramsObj
 
