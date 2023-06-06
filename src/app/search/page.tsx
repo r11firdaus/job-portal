@@ -63,7 +63,7 @@ const Search = () => {
             </path>
           </svg>
         </span>
-        <input type="text" className="form-control border-success" defaultValue={searchQuery.jobText} placeholder="Nama perusahaan, pekerjaan, dll." id="jobText" />
+        <input type="search" className="form-control border-success" defaultValue={searchQuery.jobText} placeholder="Nama perusahaan, pekerjaan, dll." id="jobText" />
       </div>
 
       <fieldset className="mb-3">

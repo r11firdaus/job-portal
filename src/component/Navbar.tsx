@@ -35,7 +35,7 @@ const Navbar = (props: { paramsObj?: SearchJobQueryTypes }) => {
           </a>
           <ul className="dropdown-menu dropdown-menu-end">
             <li><Link className="dropdown-item" href="/">Beranda</Link></li>
-            <li><Link className="dropdown-item" href="#">Profil</Link></li>
+            <li><Link className="dropdown-item" href="/profile/1/">Profil</Link></li>
             <li><hr className="dropdown-divider" /></li>
             <li><Link className="dropdown-item" href="#">Keluar</Link></li>
           </ul>
