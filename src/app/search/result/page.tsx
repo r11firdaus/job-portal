@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Jobs from "@/types/Jobs";
 
 // dummy
-import jobsData from "@/dummy/jobs.json";
+import jobsData from "@/../dummy/jobs.json";
 
 const Result = () => {
   const urlParams = useSearchParams()

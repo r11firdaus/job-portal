@@ -12,14 +12,10 @@ const EditUser = ({ params }: { params: { user_id: number } }) => {
   useEffect(() => {
     formValidation();
     (async () => {
-      const fetchUser: User = {
-        full_name: "Reza Firdaus",
-        email: "azerus98@gmail.com",
-        phone: "+6281280621197",
-        birth_date: "1998-10-11"
-      }
+      const fetchUser = await fetch('/api/v1/user')
+      const userParsed: { data: User } = await fetchUser.json()
 
-      setuserData(fetchUser)
+      setuserData(userParsed.data)
     })()  
     // console.log(params.user_id)
   }, []);
