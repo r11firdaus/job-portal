@@ -25,7 +25,7 @@ const Navbar = (props: { paramsObj?: SearchJobQueryTypes }) => {
             </svg>
           </span>
           <label className="form-control border-success" onClick={() => router.push(`/search${toParams(paramsObj)}`)}>
-            {paramsObj?.jobText ? paramsObj?.jobText : "Nama perusahaan, pekerjaan, dll."}
+            {paramsObj?.jobText ? paramsObj?.jobText : "Cari pekerjaan"}
           </label>
         </div>          
       </div>
