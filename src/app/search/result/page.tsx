@@ -70,6 +70,7 @@ const Result = () => {
               <JobCard
                 yesBtn="lamar"
                 noBtn="Simpan"
+                yesUrl={`/job/${1}/apply`} // angka 1 ganti id job
                 title={`${jobDetail.job_title} (Rp. ${jobDetail.salary_range})`}
                 subtitle={jobDetail.company_name}
                 content={jobDetail.description}

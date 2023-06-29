@@ -2,7 +2,7 @@ import user from "@/../dummy/userDummy"
 import { NextResponse } from "next/server";
 
 export function GET(req: Request) {
-  // if (req.method == 'GET') {
+  // if (req.method !== 'GET') {
   //   return new Response('Only', {
   //     status: 405,
   //   })

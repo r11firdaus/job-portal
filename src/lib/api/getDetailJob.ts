@@ -1,12 +1,12 @@
 import { cache } from "react";
 
 // dummy
-import jobsData from "@/dummy/jobs.json";
+import Jobs from "@/types/Jobs";
 
-export const getJob = cache(async (id: number) => {
-  const jobJSON = JSON.stringify(jobsData)
-  const jobParsed = await JSON.parse(jobJSON)?.data
+export const getJob = cache(async (id: number): Promise<Jobs> => {
+  const fetchAPI = await fetch(`/api/v1/job?job_id=${id}`)
+  const parseJSON = await fetchAPI.json()
   
-  const jobDetail = jobParsed[id]
+  const jobDetail = parseJSON.data
   return jobDetail
 })

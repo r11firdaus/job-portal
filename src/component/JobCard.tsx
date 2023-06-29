@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ReactNode } from "react";
 
 interface JobCard {
   yesBtn?: string,
@@ -8,9 +9,10 @@ interface JobCard {
   title?: string,
   subtitle?: string,
   content?: string
+  children?: ReactNode
 }
 
-const JobCard = ({ yesBtn, noBtn, yesUrl, noUrl, title, subtitle, content }: JobCard) => {
+const JobCard = ({ yesBtn, noBtn, yesUrl, noUrl, title, subtitle, content, children }: JobCard) => {
   return (
     <div className="card my-2">
       <div className="card-body">
@@ -21,6 +23,7 @@ const JobCard = ({ yesBtn, noBtn, yesUrl, noUrl, title, subtitle, content }: Job
         <p className="card-text">{content}</p>
         { yesBtn && <Link href={yesUrl || '#'} className="btn btn-success mx-1">{yesBtn}</Link> }
         { noBtn && <Link href={noUrl || '#'} className="btn btn-outline-success mx-1">{noBtn}</Link> }
+        { children }
       </div>
     </div>
   );

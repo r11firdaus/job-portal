@@ -23,6 +23,7 @@ const Detail = async ({ params }: { params: any }) => {
     <JobCard
       yesBtn="lamar"
       noBtn="Simpan"
+      yesUrl={`/job/${params.job_id}/apply`}
       title={`${jobDetail.job_title} (Rp. ${jobDetail.salary_range})`}
       subtitle={jobDetail.company_name}
       content={jobDetail.description}
