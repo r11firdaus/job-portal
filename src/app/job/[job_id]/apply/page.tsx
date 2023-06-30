@@ -2,6 +2,7 @@
 
 import JobCard from "@/component/JobCard";
 import Navbar from "@/component/Navbar";
+import Success from "@/component/success";
 import { getJob } from "@/lib/api/getDetailJob";
 import Jobs from "@/types/Jobs";
 import { useEffect, useState } from "react";
@@ -16,6 +17,7 @@ const question = [
 
 const Apply = ({ params }: { params: any }) => {
   const [jobDetail, setjobDetail] = useState<Jobs>();
+  const [success, setsuccess] = useState(false);
   
   useEffect(() => {
     (async () => {
@@ -34,25 +36,34 @@ const Apply = ({ params }: { params: any }) => {
 
     // if (todayDate < formDate) return console.log('tanggal tdk valid')
     console.log(data)
+    setsuccess(true)
   }
 
   return (<>
     <Navbar />
-    <JobCard
-      title= 'Pertanyaan dari perusahaan.'
-      subtitle={`Anda perlu menjawab ${5} pertanyaan untuk pekerjaan ini.`}
-    >
-      <form onSubmit={(e) => submitQuestion(e)} className="container my-4 needs-validation" noValidate>
-        {question.map((e: string, i) => (
-          <div className="mt-3" key={i}>
-            <span>{e}</span>
-            <input type="text" className="form-control" name={`${i + 1}`} />
-          </div>
-        ))}
+    { !success ?
+      <JobCard
+        title= 'Pertanyaan dari perusahaan.'
+        subtitle={`Anda perlu menjawab ${5} pertanyaan untuk pekerjaan ini.`}
+      >
+        <form onSubmit={(e) => submitQuestion(e)} className="container my-4 needs-validation" noValidate>
+          {question.map((e: string, i) => (
+            <div className="mt-3" key={i}>
+              <span>{e}</span>
+              <input type="text" className="form-control" name={`${i + 1}`} />
+            </div>
+          ))}
 
-        <button className="btn btn-success mt-2" type="submit">Kirim</button>
-      </form>
-    </JobCard>
+          <button className="btn btn-success mt-2" type="submit">Kirim</button>
+        </form>
+      </JobCard> :
+      <div className="position-absolute top-50 start-50 translate-middle">
+        <h5 className="text-center">Sukses mengirim lamaran, semoga beruntung !</h5>
+        <div className="text-center">
+          <Success />
+        </div>
+      </div>
+    }
   </>);
 }
  
