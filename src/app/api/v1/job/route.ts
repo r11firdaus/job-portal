@@ -12,6 +12,7 @@ export function GET(req: Request) {
   // }
 
   const jobData = id ? job.data[parseInt(id)] : job.data
+  console.log(jobData)
 
   return NextResponse.json({ data: jobData })
 }
