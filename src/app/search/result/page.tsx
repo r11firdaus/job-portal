@@ -45,7 +45,7 @@ const Result = () => {
 
   const viewJob = (data: any, job_id: number) => {
     if (settings.screenSize >= 768) setJobDetail(data)
-    else window.open(`/job/${job_id}/`, '_blank')
+    else window.open(`/job/${job_id}/detail/`, '_blank')
   }
 
   return (<>

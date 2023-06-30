@@ -44,8 +44,8 @@ const Apply = ({ params }: { params: any }) => {
     >
       <form onSubmit={(e) => submitQuestion(e)} className="container my-4 needs-validation" noValidate>
         {question.map((e: string, i) => (
-          <div key={i}>
-            <p>{e}</p>
+          <div className="mt-3" key={i}>
+            <span>{e}</span>
             <input type="text" className="form-control" name={`${i + 1}`} />
           </div>
         ))}
