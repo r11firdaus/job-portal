@@ -4,10 +4,12 @@ import { useRouter } from "next/navigation";
 import toParams from "@/lib/toParams";
 import SearchJobQueryTypes from "@/types/SearchJobQueryTypes";
 import Link from "next/link";
+import { useSession, signIn, signOut, SessionProvider } from "next-auth/react"
 
 const Navbar = (props: { paramsObj?: SearchJobQueryTypes }) => {
   const router = useRouter()
   const paramsObj = props.paramsObj
+  const { data: session } = useSession()
 
   return (
     <nav className="navbar navbar-expand-lg d-flex p-2">
@@ -37,7 +39,7 @@ const Navbar = (props: { paramsObj?: SearchJobQueryTypes }) => {
           </a>
           <ul className="dropdown-menu dropdown-menu-end">
             <li><Link className="dropdown-item" href="/">Beranda</Link></li>
-            <li><Link className="dropdown-item" href="/profile/1/">Profil</Link></li>
+            <li><Link className="dropdown-item" href="/profile/1/">{session?.user?.email}</Link></li>
             <li><hr className="dropdown-divider" /></li>
             <li><Link className="dropdown-item" href="#">Keluar</Link></li>
           </ul>
@@ -46,5 +48,9 @@ const Navbar = (props: { paramsObj?: SearchJobQueryTypes }) => {
     </nav>
   );
 }
+
+const WrappedNavbar = () => {
+  return <SessionProvider><Navbar /></SessionProvider>
+}
  
-export default Navbar;
+export default WrappedNavbar;
